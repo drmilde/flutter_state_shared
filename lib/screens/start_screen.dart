@@ -23,7 +23,13 @@ class _StartScreenState extends State<StartScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    DataModel.laden();
+
+
+    DataModel.laden().then((value) {
+      setState(() {
+        // wenn daten geladen wurden, dann UI aktualisieren
+      });
+    });
   }
 
   @override
