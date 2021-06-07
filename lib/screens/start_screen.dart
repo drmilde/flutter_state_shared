@@ -28,7 +28,7 @@ class _StartScreenState extends State<StartScreen> {
     DataModel.laden().then((value) {
       setState(() {
         // wenn daten geladen wurden, dann UI aktualisieren
-        // initstate wird erst aufgerufen, wenn das UI gemaounted wurde
+        // initstate wird erst aufgerufen, wenn das UI gemounted wurde
         // wir können also sicher sein, dass ein context existiert
         // und setState aufgerufen werden kann
       });
