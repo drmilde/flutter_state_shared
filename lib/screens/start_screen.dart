@@ -20,6 +20,13 @@ class _StartScreenState extends State<StartScreen> {
   Random rand = new Random();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    DataModel.laden();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +42,7 @@ class _StartScreenState extends State<StartScreen> {
                 DataModel.add(k);
               });
             },
-            child: Text("noch ein name"),
+            child: Text("Noch ein Name"),
           )),
           Container(
               child: ElevatedButton(
@@ -44,14 +51,14 @@ class _StartScreenState extends State<StartScreen> {
                 DataModel.laden();
               });
             },
-            child: Text("daten laden"),
+            child: Text("Daten laden"),
           )),
           Container(
               child: ElevatedButton(
             onPressed: () async {
               DataModel.speichern();
             },
-            child: Text("daten speichern"),
+            child: Text("Daten speichern"),
           )),
           Container(
               child: ElevatedButton(
@@ -60,8 +67,11 @@ class _StartScreenState extends State<StartScreen> {
                 DataModel.clear();
               });
             },
-            child: Text("Liste löschen"),
+            child: Text("Liste löschen (in Datenmodell)"),
           )),
+          SizedBox(
+            height: 16,
+          ),
           Container(
               child: ElevatedButton(
             onPressed: () async {
@@ -100,6 +110,10 @@ class _StartScreenState extends State<StartScreen> {
                     ),
                   );
                 }),
+          ),
+          Container(
+            height: 32,
+            color: Theme.of(context).primaryColor,
           ),
         ],
       ),

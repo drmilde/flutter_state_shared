@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_state_shared/model/kind.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,7 +7,6 @@ class DataModel {
   DataModel() {
     // TODO hier noch mehr initialisieren
     namen = [];
-    //laden();
   }
 
   static void add(Kind kind) {
@@ -22,16 +20,14 @@ class DataModel {
 
   static void printNamen() {
     print(namen.length);
-    print ("${namen[0].name} : ${namen[0].alter}");
+    print("${namen[0].name} : ${namen[0].alter}");
   }
-
 
   // löscht den Speicher
   static void clearPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
   }
-
 
   // speichert die Daten
   static void speichern() async {
@@ -44,18 +40,18 @@ class DataModel {
     }
   }
 
-
   // lädt die Daten aus den shared preferences
-
-  static void laden() async {
+  static Future<bool> laden() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    int anzahl = prefs.getInt("ank") ?? 0;
+    int? anzahl = prefs.getInt("ank") ?? 0;
     namen.clear();
 
     for (int i = 0; i < anzahl; i++) {
       String att = "kind_${i}";
-      String value = prefs.getString(att) ?? "unbekannt";
+      String value = prefs.getString(att) ?? '{"name":"unbekannt", "alter": 0}';
       namen.add(kindFromJson(value));
     }
+
+    return true;
   }
 }

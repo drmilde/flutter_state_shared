@@ -5,7 +5,6 @@ import 'package:flutter_state_shared/screens/start_screen.dart';
 void main() {
   // bevor die app startet ... Datenmodel initialisieren
   DataModel dm = new DataModel();
-
   runApp(MyApp());
 }
 
