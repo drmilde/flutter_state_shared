@@ -25,6 +25,15 @@ class DataModel {
     print ("${namen[0].name} : ${namen[0].alter}");
   }
 
+
+  // löscht den Speicher
+  static void clearPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+  }
+
+
+  // speichert die Daten
   static void speichern() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -34,6 +43,9 @@ class DataModel {
       await prefs.setString(att, kindToJson(namen[i]));
     }
   }
+
+
+  // lädt die Daten aus den shared preferences
 
   static void laden() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
